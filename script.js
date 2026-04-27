@@ -7,7 +7,7 @@ for (var i = 0; i < 3; i++) {
   features.forEach((f) => (point[f] = 1 + Math.random() * 8));
   data.push(point);
 }
-console.log(data);
+console.log(data); //
 
 let width = 600;
 let height = 600;
