@@ -124,3 +124,19 @@ body {
     align-items: center;
     gap: 5px;
 }
+
+.label {
+    border-radius: 25px;
+    padding: 5px;
+}
+
+#generation-label {
+    background-color: white;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.trainer-label {
+    background-color: #ffe5cc;
+    color: #f28212;
+}
