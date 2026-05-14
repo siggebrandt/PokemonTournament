@@ -1,6 +1,7 @@
 let startPage = document.querySelector("#startPage");
 let navBar = document.querySelector("#navBar");
 let pokemonGrid = document.querySelector("#pokemonGrid");
+let gymCardContainer = document.querySelector("#gymCardContainer")
 let chosenGen = seasons[0];
 numberOfSeason = seasons.length;
 
@@ -16,6 +17,25 @@ seasons.forEach((generation, index) => {
         renderPokemonGrid(chosenGen);
     })
     //console.log(generation, index)
+})
+
+//Skapa gym korten. Funkar nästan exakt som funktionen nedan.
+disciplines.forEach((gym) => {
+    let gymCard = document.createElement("div");
+    let gymImage = document.createElement("img");
+    let gymName = document.createElement("p");
+    gymCard.classList.add("gymCards");
+    gymImage.classList.add("gymImages");
+    gymName.classList.add("gymNames")
+
+    //Append
+    gymCardContainer.appendChild(gymCard);
+    gymCard.appendChild(gymImage);
+    gymCard.appendChild(gymName);
+
+    gymImage.src = gym.image;
+    gymName.textContent = gym.gymName;
+    gymName.style.backgroundColor = gym.color;
 })
 
 //Skapade funktionen lite i efterhand för jag insåg att det blir mindre kod att bara anropa denna

@@ -26,3 +26,28 @@
     font-size: 18px;
     margin: 0;
 }
+
+#gymCardContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.gymCards {
+    border-radius: 12px;
+    cursor: pointer;
+    width: 200px;
+}
+
+.gymImages {
+    width: 100%;
+    object-fit: cover;
+}
+
+.gymNames {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    margin-top: 0px;
+}
