@@ -26,3 +26,101 @@
     font-size: 18px;
     margin: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#startPage {
+    display: none;
+}
+
+body {
+    margin: 0;
+}
+
+#pokemon-page {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+#pokemon-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 25vh;
+    background-color: #f5f4ed;
+}
+
+#header-contents-left,
+#header-contents-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#header-contents-left {
+    margin-left: 20px;
+    gap: 20px;
+}
+
+#header-contents-right {
+    margin-right: 20px;
+}
+
+#pokemon-image {
+    background-image: url(../crossmedia/public/images/johannestompa\ 1.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+#pokemon-name-and-labels {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+#pokemon-name {
+    margin: 0;
+}
+
+#labels-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
