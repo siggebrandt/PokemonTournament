@@ -90,6 +90,10 @@ body {
     margin: 0;
 }
 
+#startPage {
+    display: grid;
+}
+
 #pokemon-page {
     display: hide;
     flex-direction: column;
@@ -141,8 +145,7 @@ body {
     height: 40px;
 }
 
-#pokemon-image {
-    background-image: url(../crossmedia/public/images/johannestompa\ 1.png);
+#pokemon-picture {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -159,7 +162,7 @@ body {
     gap: 10px;
 }
 
-#pokemon-name {
+#pokemon-name-label {
     margin: 0;
 }
 

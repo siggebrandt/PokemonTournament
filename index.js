@@ -4,7 +4,17 @@ let pokemonGrid = document.querySelector("#pokemonGrid");
 let gymCardContainer = document.querySelector("#gymCardContainer")
 let chosenGen = seasons[0];
 let gymPage = document.querySelector("#gymPage");
+
+const pokemonPage = document.getElementById("pokemon-page");
+const pokemonPicture = document.getElementById("pokemon-picture");
+const pokemonLabelsContainer = document.getElementById("labels-container");
+const pokemonNameLabel = document.getElementById("pokemon-name-label");
+const pokemonGenLabel = document.getElementById("generation-label");
+const trainerNameLabel = document.getElementById("trainer-name-label");
+const trainerSkillLabel = document.getElementById("trainer-skill-label");
+
 numberOfSeason = seasons.length;
+let currentGen = seasons;
 
 //STARTSIDA
 //Skapa navBar 
@@ -16,6 +26,7 @@ seasons.forEach((generation, index) => {
 
     genButton.addEventListener("click", () => {
         chosenGen = seasons[index];
+        currentGen = [chosenGen];
         renderPokemonGrid(chosenGen);
     })
     //console.log(generation, index)
@@ -28,7 +39,7 @@ disciplines.forEach((gym) => {
     let gymName = document.createElement("p");
     gymCard.classList.add("gymCards");
     gymImage.classList.add("gymImages");
-    gymName.classList.add("gymNames")
+    gymName.classList.add("gymNames");
 
     //Append
     gymCardContainer.appendChild(gymCard);
@@ -64,16 +75,19 @@ function createPokemonCards(pokemonArray) {
         pokemonGrid.appendChild(pokemonCard);
         pokemonCard.appendChild(pokemonImg);
         pokemonCard.appendChild(pokemonName);
+        console.log(pokemon);
 
         //Hämtar en url från funktionen getPokemonImageUrl och lägger in the på image soruce.
         let imageUrl = getPokemonImageUrl(pokemon.dexNumber);
         pokemonImg.src = imageUrl;
         pokemonName.textContent = pokemon.pokemonName;
 
-        //Event listener
-        pokemonCard.addEventListener("click", () => {
-            //Här kanske man anropar någon funktion.
-            //Kan till exempel stå renderPokemonPage(pokemon);
+        pokemonCard.addEventListener("click", function () {
+            startPage.style.display = "none";
+            pokemonPage.style.display = "flex";
+            pokemonPicture.style.backgroundImage = `url(${imageUrl})`;
+
+            renderPokemonPage(pokemon);
         })
     })
 }
@@ -108,23 +122,113 @@ function renderPokemonGrid(gen) {
 }
 
 renderPokemonGrid(null);
+// Detta är sebbes branch
 
-//STARTSIDA
-//GYMSIDA
-function renderGymPage(gym) {
-    console.log(gym)
-    startPage.classList.add("hide");
-    gymPage.classList.remove("hide");
-    createRadarChart(gym);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function renderPokemonPage(pokemon) {
+    pokemonNameLabel.textContent = pokemon.pokemonName;
+
+    const getCurrentGenNumber = currentGen.length === 1 ? currentGen.map(g => g.year + 1) : NaN; //Kollar först om vi valt en generation, då blir currentGen.length 1. Om vi inte valt någon generation visas alla vilket resulterar i att inget unikt number valts (därmed Not a Number)
+    pokemonGenLabel.textContent = getCurrentGenNumber ? `Generation ${getCurrentGenNumber}` : "All Generations";
+    /*   const currentCoachesId = currentGen.map(g => g.coaches.find(c => c.participantId === pokemon.id)).map(p => p.coachId);
+      console.log(currentCoachesId)
+      const coachNames = currentCoachesId.map(coach => coaches.find(c => c.id === coach)).map(c => c.name); */
+    const currentTrainersId = currentGen.map(g => g.trainers.find(t => t.participantId === pokemon.id)).filter(t => t != undefined).map(t => t.trainerId);
+    const trainerNames = currentTrainersId.map(trainer => trainers.find(t => t.id === trainer)).map(t => t.name);
+    const amountOfTrainers = trainerNames.length;
+    trainerNames.forEach(name => {
+        const div = document.createElement("div");
+        div.classList.add("label");
+        div.classList.add("trainer-label")
+        div.textContent = name;
+        pokemonLabelsContainer.append(div);
+    })
 }
-
-function createRadarChart(gym) {
-    let skillPoints = []
-    for (let skill in gym.skillFactors) {
-        skillPoints.push(gym.skillFactors[skill]);
-    }
-    console.log(skillPoints)
-
-
-}
-//GYMSIDA
